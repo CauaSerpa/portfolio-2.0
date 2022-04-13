@@ -460,6 +460,10 @@ header .nav
 {
     color: var(--golden);
 }
+.footer-link:hover
+{
+    color: var(--golden);
+}
 /* Scroll To Top */
 .to-top
 {
