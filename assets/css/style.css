@@ -234,7 +234,7 @@ header .nav
 /* Home */
 .home
 {
-    height: calc(100vh - 3rem);
+    height: calc(100vh - 6rem);
 	row-gap: 1rem;
 	display: flex;
 	flex-direction: column;
