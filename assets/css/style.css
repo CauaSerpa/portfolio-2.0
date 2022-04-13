@@ -446,7 +446,7 @@ header .nav
     flex-direction: column;
     align-items: flex-end;
 }
-.link__container .header
+.link__container .container__footer
 {
     display: flex;
     flex-direction: column;
