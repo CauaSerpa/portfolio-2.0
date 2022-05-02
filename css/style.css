@@ -14,7 +14,7 @@
 	--black: #181818;
     --gray: #C4C4C4;
     --golden: #B38D46;
-    --second-golden: #93743B;
+    --second-golden: #836938;
 
     --shadow: rgba(0, 0, 0, .5);
 }
@@ -79,8 +79,6 @@
 	top: 0;
 	left: 0;
 	z-index: var(--z-fixed);
-	background: var(--primary-color);
-	box-shadow: 0 1px 4px rgba(40, 40, 40, .15);
 }
 /* Base */
 *,::before,::after
@@ -123,6 +121,10 @@ img
 /* Class CSS */
 .section
 {
+    position: relative;
+    max-width: 1200px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 100%;
     margin-top: 3rem;
     padding: var(--mb-4);
@@ -140,6 +142,7 @@ img
 .title
 {
     font-size: var(--big-font-size);
+    margin-top: var(--mb-4);
     margin-bottom: var(--mb-6);
     font-weight: 600;
 }
@@ -200,11 +203,15 @@ header
     height: 3.5rem;
     top: 0;
     left: 0;
-    background: var(--primary-color);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: var(--z-fixed);
+}
+header.background
+{
+    background: var(--primary-color);
+	box-shadow: 0 1px 4px rgba(100, 100, 100, 0.15);
 }
 header .nav
 {
@@ -283,7 +290,7 @@ header .nav
 {
     position: relative;
     right: 0;
-    color: var(--secondary-color);
+    color: #7E7E7E;
     transition: .3s;
 }
 .link:hover
@@ -321,6 +328,10 @@ header .nav
     top: 0;
     background: var(--golden);
 }
+.active
+{
+    color: var(--secondary-color);
+}
 /* Show menu */
 .show
 {
@@ -337,6 +348,9 @@ section.home
     width: 100%;
     height: calc(100vh - 3.5rem);
     background: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     overflow: hidden;
 }
 .home canvas
@@ -348,10 +362,7 @@ section.home
 }
 .home .home__container
 {
-    position: absolute;
-    left: 150px;
-    top: 50%;
-    transform: translateY(-50%);
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -373,7 +384,7 @@ section.home
 .home .sroll-down
 {
     position: absolute;
-    bottom: 10%;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
     width: 20px;
@@ -383,6 +394,11 @@ section.home
     overflow: hidden;
     cursor: pointer;
     z-index: 10;
+    transition: .3s;
+}
+.home .sroll-down:hover
+{
+    border-color: gray;
 }
 .home .sroll-down span.button
 {
@@ -391,16 +407,21 @@ section.home
 .home .sroll-down .button .ball
 {
     position: absolute;
-    left: 5px;
+    left: 6px;
     top: 15px;
-    width: 6px;
-    height: 10px;
-    border-radius: 0.5rem;
+    width: 4px;
+    height: 8px;
+    border-radius: 4px;
     background: var(--secondary-color);
-    animation: slide 1s linear infinite;
+    animation: slide 2s linear infinite;
+    transition: .3s;
+}
+.home .sroll-down:hover .button .ball
+{
+    background: grey;
 }
 @keyframes slide {
-    30%
+    20%
     {
         transform: translateY(-10px);
     }
@@ -427,6 +448,15 @@ section.home
     font-size: var(--h2-font-size);
     margin-top: var(--mb-2);
     margin-bottom: var(--mb-2);
+}
+.about .about__container .about__text .text a
+{
+    color: var(--golden);
+    transition: .3s;
+}
+.about .about__container .about__text .text a:hover
+{
+    color: var(--second-golden);
 }
 /* Services */
 .services .box__container
@@ -584,7 +614,7 @@ section.home
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: var(--mb-4);
+    margin-top: var(--mb-4);
 }
 @media screen and (max-width: 768px) {
     .grid-container
@@ -602,6 +632,7 @@ section.home
 section.contact
 {
     margin-top: 6rem;
+    margin-bottom: 6rem;
 }
 .contact .text
 {
@@ -646,6 +677,7 @@ footer.footer
     text-align: center;
     background: var(--primary-color);
     padding: var(--mb-4);
+    padding-bottom: 150px;
 }
 .footer .footer__title
 {
@@ -708,6 +740,13 @@ footer.footer
     {
         height: 100vh;
     }
+    .home .home__container
+    {
+        position: absolute;
+        left: 150px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
     
     .portfolio .portfolio__container span.content.full
     {
@@ -727,7 +766,13 @@ footer.footer
     }
     .about .about__container .about__img
     {
+        justify-content: flex-end;
+        margin-right: var(--mb-6);
         margin-bottom: 0;
+    }
+    .about .about__container .about__text
+    {
+        margin-left: var(--mb-6);
     }
 }
 @media screen and (min-width: 768px) {
@@ -771,10 +816,6 @@ footer.footer
 	.nav__menu
 	{
 		display: none !important;
-	}
-	.link
-	{
-		color: var(--secondary-color);
 	}
     .link:hover
     {
