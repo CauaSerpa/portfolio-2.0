@@ -498,7 +498,6 @@ section.home
 .box
 {
     position: relative;
-    cursor: pointer;
     transition: color .4s linear;
     display: flex;
     align-items: center;
@@ -549,11 +548,7 @@ section.home
 }
 .services .box__container .box p.text
 {
-    color: var(--gray);
-}
-.services .box__container .btn:hover svg
-{
-    fill: #000;
+    color: #C4C4C4;
 }
 /* Portfólio */
 .portfolio
@@ -759,7 +754,6 @@ footer.footer
     text-align: center;
     background: var(--primary-color);
     padding: var(--mb-4);
-    padding-bottom: 150px;
 }
 .footer .footer__title
 {
@@ -772,16 +766,86 @@ footer.footer
 {
     transform: translateY(-10px);
     font-size: var(--h2-font-size);
+    margin: 0;
     font-weight: 500;
+    margin-bottom: var(--mb-4);
 }
 .footer .footer__title img
 {
-    width: 60px;
-    height: 60px;
+    width: 68px;
+    height: 68px;
+}
+.footer .footer__container
+{
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer .footer__container .container
+{
+    width: 33.3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer .footer__container .height-line::before
+{
+    content: '';
+    width: 2px;
+    height: 175px;
+    background: var(--golden);
+}
+.footer .footer__container .social__media
+{
+    justify-content: flex-end;
+}
+.footer .footer__container .social__media ul li a
+{
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: var(--mb-1);
+    transition: .3s;
+}
+.footer .footer__container .social__media ul li a:hover,
+.footer .footer__container .social__media ul li a:hover svg
+{
+    color: var(--golden);
+    fill: var(--golden);
+}
+.footer .footer__container .social__media ul li a svg
+{
+    fill: var(--gray);
+    margin-left: var(--mb-1);
+    transition: .3s;
+}
+.footer .footer__container .links
+{
+    justify-content: flex-start;
+}
+.footer .footer__container .links ul li a
+{
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: var(--mb-1);
+    transition: .3s;
+}
+.footer .footer__container .links ul li a:hover
+{
+    color: var(--golden);
+}
+.footer .footer__container .links ul li a.footer__active
+{
+    color: var(--golden);
 }
 .footer .copyright .text
 {
     font-size: var(--little-font-size);
+    margin-top: var(--mb-4);
 }
 .footer .copyright .text .color
 {
@@ -795,27 +859,51 @@ footer.footer
     bottom: 20px;
     width: 40px;
     height: 40px;
-    background: var(--golden);
+    background: var(--second-golden);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     z-index: var(--z-fixed);
+    overflow: hidden;
     visibility: hidden;
     opacity: 0;
     transition: .3s;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, .5);
 }
-.to-top i
+.to-top:hover
 {
-    color: var(--secondary-color);
-    font-size: 2rem;
+    background: var(--golden);
+}
+.to-top svg
+{
+    fill: var(--secondary-color);
+    transform: translateY(200%);
+    transition: .6s ease-in-out;
+}
+.to-top:hover svg
+{
+    animation: to-top 1s ease-in-out;
+}
+@keyframes to-top {
+    10%
+    {
+        transform: translateY(25%);
+    }
+    100%
+    {
+        transform: translateY(-200%);
+    }
 }
 /* Active Scroll */
 .to-top.scroll
 {
     visibility: visible;
     opacity: 1;
+}
+.scroll svg
+{
+    transform: translateY(0);
 }
 @media screen and (min-width: 1024px) {
     section.home

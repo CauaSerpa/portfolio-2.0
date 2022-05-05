@@ -8,6 +8,8 @@ const showMenu = (toggleId, navId) =>{
             var close = document.getElementById('nav-toggle');
 	        close.classList.toggle('close');
 
+            
+
 			nav.classList.toggle('show')
 		})
 	}
@@ -67,7 +69,6 @@ window.addEventListener("scroll", () => {
 	}
 })
 
-/*
 //Back to top
 const toTop = document.querySelector(".to-top");
 
@@ -78,7 +79,7 @@ window.addEventListener("scroll", () => {
 		toTop.classList.remove("scroll");
 	}
 })
-*/
+
 //Canvas
 var canvas = document.getElementById('nokey'),
    can_w = parseInt(canvas.getAttribute('width')),
