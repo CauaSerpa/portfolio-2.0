@@ -777,7 +777,7 @@ footer.footer
 }
 .footer .footer__container
 {
-    width: 500px;
+    width: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -943,6 +943,14 @@ footer.footer
     .about .about__container .about__text
     {
         margin-left: var(--mb-6);
+    }
+
+    .footer .footer__container
+    {
+        width: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 @media screen and (max-width: 768px) {
