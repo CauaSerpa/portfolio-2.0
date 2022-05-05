@@ -12,7 +12,7 @@
     --primary-color: #000000;
     --secondary-color: #FFFFFF;
 	--black: #181818;
-    --gray: #C4C4C4;
+    --gray: #7E7E7E;
     --golden: #B38D46;
     --second-golden: #755e32;
 
@@ -136,7 +136,7 @@ img
 .line
 {
     width: 100px;
-    height: 1px;
+    height: 2px;
     background: var(--golden);
 }
 .title
@@ -291,7 +291,7 @@ header .nav
 {
     position: relative;
     right: 0;
-    color: #7E7E7E;
+    color: var(--gray);
     transition: .3s;
 }
 .link:hover
@@ -394,32 +394,29 @@ section.home
     border-radius: 20px;
     overflow: hidden;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     z-index: 10;
     transition: .3s;
 }
-.home .sroll-down:hover
+.home .sroll-down::before
 {
-    border-color: gray;
-}
-.home .sroll-down span.button
-{
-    position: relative;
-}
-.home .sroll-down .button .ball
-{
-    position: absolute;
-    left: 6px;
-    top: 15px;
-    width: 4px;
+    content: '';
+    width: 5px;
     height: 8px;
     border-radius: 4px;
     background: var(--secondary-color);
     animation: slide 2s linear infinite;
     transition: .3s;
 }
-.home .sroll-down:hover .button .ball
+.home .sroll-down:hover
 {
-    background: grey;
+    border-color: var(--gray);
+}
+.home .sroll-down:hover::before
+{
+    background: var(--gray);
 }
 @keyframes slide {
     20%
@@ -482,22 +479,64 @@ section.home
 }
 .services .box__container > .box
 {
-    flex: 1 1 200px;
-    margin-bottom: var(--mb-2);
+    flex: 1 1 400px;
+    margin-bottom: var(--mb-4);
 }
 .services .box__container .box
 {
-    max-width: 250px;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    z-index: 2;
+    background: #2a2a2a;
+    padding: var(--mb-4);
+    box-shadow: 0 2px 0 var(--golden);
 }
+/* Animation */
+.box
+{
+    position: relative;
+    cursor: pointer;
+    transition: color .4s linear;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.box:hover
+{
+    box-shadow: 0 0 10px var(--shadow);
+}
+.box::before
+{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--golden);
+    z-index: -1;
+    transition: transform .5s;
+    transform-origin: bottom;
+    transition-timing-function: cubic-bezier(.5,1.6,.4,.7);
+}
+.box::before
+{
+    transform: scaleY(0);
+}
+.box:hover::before
+{
+    transform: scaleY(1);
+}
+/* End Animation */
 .services .box__container .box img
 {
     width: 54px;
 }
-.services .box__container .box svg
+.services .box__container .box img
 {
     fill: var(--secondary-color);
     width: 54px;
@@ -505,6 +544,8 @@ section.home
 .services .box__container .box p.title
 {
     font-size: var(--h2-font-size);
+    margin: var(--mb-1) 0;
+    font-weight: 500;
 }
 .services .box__container .box p.text
 {
@@ -536,7 +577,7 @@ section.home
     object-fit: cover;
     pointer-events: none;
 }
-.grid-container > a
+.grid-container > div
 {
     position: relative;
     display: flex;
@@ -546,24 +587,23 @@ section.home
     object-fit: cover;
     transition: .3s ease-in-out;
     overflow: hidden;
-    cursor: pointer;
     box-shadow: var(--shadow);
 }
-.grid-container > a.content:hover
+.grid-container > div.content:hover
 {
     width: 100%;
     height: 100%;
     background: rgba(236, 184, 87, 0.75);
 }
-.grid-container > a.content:hover .img
+.grid-container > div.content:hover .img
 {
     transform: scale(1.1);
 }
-.grid-container > a.content:hover .hover
+.grid-container > div.content:hover .hover
 {
     display: flex;
 }
-.grid-container > a.content::before
+.grid-container > div.content::before
 {
     content: '';
     position: absolute;
@@ -575,7 +615,7 @@ section.home
     transform: skewX(-30deg);
     transition: .6s;
 }
-.grid-container > a.content:hover::before
+.grid-container > div.content:hover::before
 {
     left: calc(100% + 200px);
 }
@@ -607,19 +647,25 @@ section.home
     display: none;
     transition: .3s ease-in-out;
 }
-.hover .text
+.hover span.project
 {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
 }
-.hover svg
+.hover .view__project
 {
     position: absolute;
     top: 15px;
     right: 15px;
     fill: var(--secondary-color);
+    display: flex;
+    align-items: center;
+}
+.hover .view__project svg
+{
+    margin-left: var(--mb-1);
 }
 .item-1
 {
