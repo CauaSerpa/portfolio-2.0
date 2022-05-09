@@ -277,11 +277,11 @@ header .nav
 /* Menu active close */
 .close div.line-1
 {
-    margin-bottom: 0;
+    margin-bottom: -1px;
 }
 .close div.line-3
 {
-    margin-top: 0;
+    margin-top: -1px;
 }
 .nav__item
 {
@@ -522,7 +522,6 @@ section.home
     z-index: -1;
     transition: transform .5s;
     transform-origin: bottom;
-    transition-timing-function: cubic-bezier(.5,1.6,.4,.7);
 }
 .box::before
 {
