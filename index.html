@@ -1,1092 +1,285 @@
-/* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-/* Variables CSS */
-:root
-{
-	--header-height: 3rem;
-	--font-semi: 600;
-}
-/* Colors */
-:root
-{
-    --primary-color: #000000;
-    --secondary-color: #FFFFFF;
-	--black: #181818;
-    --gray: #7E7E7E;
-    --golden: #B38D46;
-    --second-golden: #755e32;
-
-    --shadow: rgba(0, 0, 0, .5);
-}
-.dark-theme
-{
-    --primary-color: #000;
-    --secondary-color: #FFF;
-    --hover: #181818;
-    --shadow: rgba(255, 255, 255, .5);
-}
-/* Fonte */
-:root
-{
-	--body-font: 'Poppins', sans-serif;
-	--big-font-size: 2.5rem;
-	--h2-font-size: 2rem;
-	--normal-font-size: 1rem;
-	--little-font-size: .875rem;
-}
-@media screen and (min-width: 768px)
-{
-	:root
-	{
-		--big-font-size: 3.5rem;
-		--h2-font-size: 2rem;
-		--normal-font-size: 1rem;
-	    --little-font-size: .938rem;
-	}
-}
-/* Margens */
-:root
-{
-	--mb-1: 0.5rem;
-	--mb-2: 1rem;
-	--mb-3: 1.5rem;
-	--mb-4: 2rem;
-	--mb-5: 2.5rem;
-	--mb-6: 3rem;
-}
-/* z index */
-:root{
-	--z-back: -10;
-	--z-normal: 1;
-	--z-tooltip: 10;
-	--z-fixed: 100;
-}
-/* Layout */
-.bd-grid
-{
-	max-width: 1024px;
-	display: grid;
-	grid-template-columns: 100%;
-	grid-column-gap: 2rem;
-	width: calc(100% - 2rem);
-	margin-left: var(--mb-2);
-	margin-right: var(--mb-2);
-}
-.l-header
-{
-	width: 100%;
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: var(--z-fixed);
-}
-/* Base */
-*,::before,::after
-{
-	box-sizing: border-box;
-}
-html
-{
-	scroll-behavior: smooth;
-}
-body
-{
-	margin: var(--header-heigth) 0 0 0;
-	font-family: var(--body-font);
-	font-size: var(--normal-font-size);
-    color: var(--secondary-color);
-	background: var(--black);
-}
-h1,h2,p
-{
-	margin: 0;
-}
-ul
-{
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-a
-{
-	text-decoration: none;
-    color: var(--secondary-color);
-}
-img
-{
-	max-width: 100%;
-	height: auto;
-	display: block;
-}
-/* Class CSS */
-.section
-{
-    position: relative;
-    max-width: 1200px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    margin-top: 3rem;
-    padding: var(--mb-4);
-}
-.logo
-{
-    width: 50px;
-}
-.line
-{
-    width: 100px;
-    height: 2px;
-    background: var(--golden);
-}
-.title
-{
-    font-size: var(--big-font-size);
-    margin-top: var(--mb-4);
-    margin-bottom: var(--mb-6);
-    font-weight: 600;
-}
-.text
-{
-    letter-spacing: 3px;
-    font-size: var(--normal-font-size);
-}
-/* Button */
-.btn
-{
-    position: relative;
-    padding: 10px 15px;
-    width: 130px;
-    border: 2px solid var(--secondary-color);
-    background: none;
-    font-size: 20px;
-    color: var(--secondary-color);
-    cursor: pointer;
-    transition: color .4s linear;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-.btn:hover
-{
-    color: var(--black);
-    box-shadow: 0 0 10px var(--shadow);
-}
-.btn::before
-{
-    content: "";
-    position: absolute;
-    left: -1px;
-    top: -1px;
-    width: calc(100% + 2px);
-    height: calc(100% + 2px);
-    background: var(--secondary-color);
-    z-index: -1;
-    transition: transform .5s;
-    transform-origin: 0 0;
-    transition-timing-function: cubic-bezier(.5,1.6,.4,.7);
-}
-.btn::before
-{
-    transform: scaleY(0);
-}
-.btn:hover::before
-{
-    transform: scaleY(1);
-}
-/* Nav */
-header
-{
-    position: fixed;
-    width: 100%;
-    height: 3.5rem;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: var(--z-fixed);
-}
-header.background
-{
-    background: var(--primary-color);
-	box-shadow: 0 1px 4px rgba(100, 100, 100, 0.15);
-}
-header .nav
-{
-    width: 80%;
-    height: var(--header-height);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-@media screen and (max-width: 768px)
-{
-    header .nav .nav__container
-    {
-        position: fixed;
-        top: 0;
-        right: -60%;
-        width: 60%;
-        height: 100vh;
-        padding: 2rem;
-        padding-top: 4rem;
-        background: var(--primary-color);
-        transition: .5s;
-    }
-}
-.logo
-{
-    display: flex;
-    justify-content: center;
-}
-.nav__menu
-{
-    justify-content: flex-end;
-}
-.mobile-menu
-{
-    cursor: pointer;
-}
-.mobile-menu div
-{
-    display: inherit;
-    width: 25px;
-    height: 2px;
-    background: var(--secondary-color);
-}
-.mobile-menu div.line-1
-{
-    margin-bottom: 6px;
-    transition: .2s;
-}
-.mobile-menu div.line-3
-{
-    margin-top: 6px;
-    transition: .2s;
-}
-/* Menu active close */
-.close div.line-1
-{
-    margin-bottom: -1px;
-}
-.close div.line-3
-{
-    margin-top: -1px;
-}
-.nav__item
-{
-    display: flex;
-    justify-content: end;
-    margin-bottom: var(--mb-4);
-}
-.link
-{
-    position: relative;
-    right: 0;
-    color: var(--gray);
-    transition: .3s;
-}
-.link:hover
-{
-    position: relative;
-    padding-right: 1rem;
-}
-.link::after
-{
-    position: absolute;
-    content: "";
-    height: 0;
-    width: 2px;
-    right: 0;
-    top: 0;
-    background: var(--golden);
-    transition: .3s;
-}
-.link:hover::after
-{
-    height: 100%;
-}
-/* Active menu */
-.active
-{
-    padding-right: 1rem;
-}
-.active::after
-{
-    position: absolute;
-    content: "";
-    height: 100%;
-    width: 2px;
-    right: 0;
-    top: 0;
-    background: var(--golden);
-}
-.active
-{
-    color: var(--secondary-color);
-}
-/* Show menu */
-.show
-{
-    right: 0 !important;
-}
-.close.line-3
-{
-    margin-top: 1px;
-}
-/* Home */
-section.home
-{
-    position: relative;
-    width: 100%;
-    height: calc(100vh - 3.5rem);
-    background: var(--primary-color);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: hidden;
-}
-.home canvas
-{
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 1;
-}
-.home .home__container
-{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    z-index: 10;
-}
-.home .home__container h2
-{
-    font-size: var(--big-font-size);
-}
-.home .home__container .line
-{
-    margin-top: var(--mb-2);
-    margin-bottom: var(--mb-2);
-}
-.home .home__container .button
-{
-    margin-top: var(--mb-2);
-}
-.home .sroll-down
-{
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 20px;
-    height: 40px;
-    border: 2px solid var(--secondary-color);
-    border-radius: 20px;
-    overflow: hidden;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    transition: .3s;
-}
-.home .sroll-down::before
-{
-    content: '';
-    width: 6px;
-    height: 8px;
-    border-radius: 4px;
-    background: var(--secondary-color);
-    animation: slide 2s linear infinite;
-    transition: .3s;
-}
-.home .sroll-down:hover
-{
-    border-color: var(--gray);
-}
-.home .sroll-down:hover::before
-{
-    background: var(--gray);
-}
-@keyframes slide {
-    20%
-    {
-        transform: translateY(-10px);
-    }
-    100%
-    {
-        transform: translateY(40px);
-    }
-}
-/* About */
-.about .about__container .about__img
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: var(--mb-4);
-}
-.about .about__container .container
-{
-    max-width: 1024px;
-    width: 90%;
-}
-.about .about__container .about__text h2
-{
-    font-size: var(--h2-font-size);
-    margin-top: var(--mb-2);
-    margin-bottom: var(--mb-2);
-}
-.about .about__container .about__text .text a
-{
-    color: var(--golden);
-    transition: .3s;
-}
-.about .about__container .about__text .text a:hover
-{
-    color: var(--second-golden);
-}
-.about .about__container .about__text .follow__container .follow
-{
-    margin-top: var(--mb-2);
-}
-.about .about__container .about__text .follow__container .follow a
-{
-    fill: var(--golden);
-    margin-right: var(--mb-3);
-    transition: .3s;
-}
-.about .about__container .about__text .follow__container a:hover
-{
-    fill: var(--second-golden);
-}
-/* Services */
-.services .box__container
-{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.services .box__container > .box
-{
-    flex: 1 1 400px;
-    margin-bottom: var(--mb-4);
-}
-.services .box__container .box
-{
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    z-index: 2;
-    background: #2a2a2a;
-    padding: var(--mb-4);
-    box-shadow: inset 0 -2px 0 var(--golden);
-}
-/* Animation */
-.box
-{
-    position: relative;
-    transition: color .4s linear;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-.box:hover
-{
-    box-shadow: 0 0 10px var(--shadow);
-}
-.box::before
-{
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--golden);
-    z-index: -1;
-    transition: transform .5s;
-    transform-origin: bottom;
-}
-.box::before
-{
-    transform: scaleY(0);
-}
-.box:hover::before
-{
-    transform: scaleY(1);
-}
-/* End Animation */
-.services .box__container .box img
-{
-    width: 54px;
-}
-.services .box__container .box img
-{
-    fill: var(--secondary-color);
-    width: 54px;
-}
-.services .box__container .box p.title
-{
-    font-size: var(--h2-font-size);
-    margin: var(--mb-1) 0;
-    font-weight: 500;
-}
-.services .box__container .box p.text
-{
-    color: #C4C4C4;
-}
-/* Portfólio */
-.portfolio
-{
-    overflow-x: hidden;
-}
-.portfolio .portfolio__container
-{
-    max-width: 900px;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 50% 50%;
-}
-.portfolio .portfolio__container img
-{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    pointer-events: none;
-}
-.grid-container > div
-{
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    object-fit: cover;
-    transition: .3s ease-in-out;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-}
-.grid-container > div.content:hover
-{
-    width: 100%;
-    height: 100%;
-    background: rgba(236, 184, 87, 0.75);
-}
-.grid-container > div.content:hover .img
-{
-    transform: scale(1.1);
-}
-.grid-container > div.content:hover .hover
-{
-    display: flex;
-}
-.grid-container > div.content::before
-{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -290px;
-    width: 200px;
-    height: 100%;
-    background: rgba(255, 255, 255, .3);
-    transform: skewX(-30deg);
-    transition: .6s;
-}
-.grid-container > div.content:hover::before
-{
-    left: calc(100% + 200px);
-}
-.grid-container
-{
-    display: grid;
-    justify-content: center;
-    grid-template-columns: 250px 250px 250px;
-    grid-template-rows: 250px 250px 250px;
-    gap: 25px;
-    grid-template-areas:
-    "um um dois"
-    "tres quatro quatro"
-    "cinco cinco seis";
-}
-.img
-{
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
-    transition: .6s ease-in-out;
-}
-.item-1 .img
-{
-    background-image: url(../img/project-1.jpg);
-}
-.item-2 .img
-{
-    background-image: url(../img/project-4.jpg);
-}
-.item-3 .img
-{
-    background-image: url(../img/project-4.jpg);
-}
-.item-4 .img
-{
-    background-image: url(../img/project-1.jpg);
-}
-.item-5 .img
-{
-    background-image: url(../img/project-1.jpg);
-}
-.item-6 .img
-{
-    background-image: url(../img/project-4.jpg);
-}
-.hover
-{
-    display: none;
-    transition: .3s ease-in-out;
-}
-.hover span.project
-{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
-.hover .view__project
-{
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    fill: var(--secondary-color);
-    display: flex;
-    align-items: center;
-}
-.hover .view__project svg
-{
-    margin-left: var(--mb-1);
-}
-.item-1
-{
-    grid-area: um;
-}
-.item-2
-{
-    grid-area: dois;
-}
-.item-3
-{
-    grid-area: tres;
-}
-.item-4
-{
-    grid-area: quatro;
-}
-.item-5
-{
-    grid-area: cinco;
-}
-.item-6
-{
-    grid-area: seis;
-}
-.portfolio .button
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: var(--mb-4);
-}
-@media screen and (max-width: 768px) {
-    .grid-container
-    {
-        grid-template-columns: 300px;
-        grid-template-rows: 200px 200px 200px 200px 200px 200px;
-        grid-template-areas:
-        "um"
-        "dois"
-        "tres"
-        "quatro"
-        "cinco"
-        "seis";
-    }
-}
-/* Contact */
-section.contact
-{
-    margin-top: 6rem;
-    margin-bottom: 6rem;
-}
-.contact .text
-{
-    color: var(--gray);
-    font-size: var(--little-font-size);
-    font-weight: 400;
-    margin: 0;
-    padding: 5px 0;
-}
-.contact .contact__title a.title
-{
-    position: relative;
-    font-size: 1.4rem;
-}
-.contact .contact__title a.title::after
-{
-    content: '';
-    position: absolute;
-    background: var(--golden);
-    height: 3px;
-    width: 0;
-    left: 0;
-    bottom: 0;
-    z-index: -1;
-    transition: .5s;
-}
-.contact .contact__title a.title:hover::after
-{
-    width: 100%;
-}
-.contact .contact__title .title svg
-{
-    fill: var(--secondary-color);
-}
-/* Footer */
-footer.footer
-{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: var(--primary-color);
-    padding: var(--mb-4);
-}
-.footer .footer__title
-{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-.footer .footer__title .title
-{
-    transform: translateY(-10px);
-    font-size: var(--h2-font-size);
-    margin: 0;
-    font-weight: 500;
-    margin-bottom: var(--mb-4);
-}
-.footer .footer__title img
-{
-    width: 68px;
-    height: 68px;
-}
-.footer .footer__container
-{
-    width: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.footer .footer__container .container
-{
-    width: 33.3%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.footer .footer__container .height-line::before
-{
-    content: '';
-    width: 2px;
-    height: 175px;
-    background: var(--golden);
-}
-.footer .footer__container .social__media
-{
-    justify-content: flex-end;
-}
-.footer .footer__container .social__media ul li a
-{
-    color: var(--gray);
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    margin-bottom: var(--mb-1);
-    transition: .3s;
-}
-.footer .footer__container .social__media ul li a:hover,
-.footer .footer__container .social__media ul li a:hover svg
-{
-    color: var(--golden);
-    fill: var(--golden);
-}
-.footer .footer__container .social__media ul li a svg
-{
-    fill: var(--gray);
-    margin-left: var(--mb-1);
-    transition: .3s;
-}
-.footer .footer__container .links
-{
-    justify-content: flex-start;
-}
-.footer .footer__container .links ul li a
-{
-    color: var(--gray);
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-bottom: var(--mb-1);
-    transition: .3s;
-}
-.footer .footer__container .links ul li a:hover
-{
-    color: var(--golden);
-}
-.footer .footer__container .links ul li a.footer__active
-{
-    color: var(--golden);
-}
-.footer .copyright .text
-{
-    font-size: var(--little-font-size);
-    margin-top: var(--mb-4);
-}
-.footer .copyright .text .color
-{
-    color: var(--golden);
-}
-/* Scroll To Top */
-.to-top
-{
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    width: 40px;
-    height: 40px;
-    background: var(--second-golden);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: var(--z-fixed);
-    overflow: hidden;
-    visibility: hidden;
-    opacity: 0;
-    transition: .3s;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, .5);
-}
-.to-top:hover
-{
-    background: var(--golden);
-}
-.to-top svg
-{
-    fill: var(--secondary-color);
-    transform: translateY(200%);
-    transition: .6s ease-in-out;
-}
-.to-top:hover svg
-{
-    animation: to-top 1s ease-in-out;
-}
-@keyframes to-top {
-    10%
-    {
-        transform: translateY(25%);
-    }
-    100%
-    {
-        transform: translateY(-200%);
-    }
-}
-/* Active Scroll */
-.to-top.scroll
-{
-    visibility: visible;
-    opacity: 1;
-}
-.scroll svg
-{
-    transform: translateY(0);
-}
-@media screen and (min-width: 1024px) {
-    section.home
-    {
-        height: 100vh;
-    }
-    .home .home__container
-    {
-        position: absolute;
-        left: 150px;
-        top: 50%;
-        transform: translateY(-50%);
-    }
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cauã Serpa</title>
+    <!--CSS-->
+    <link rel="stylesheet" href="css/style.css">
+    <!--Favicon-->
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <!--Box Icons-->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header class="l-header">
+		<nav class="nav bd-grid">
+            <a href="#" class="nav__logo">
+                <img class="logo" src="img/logo.png" alt="">
+            </a>
+            <div class="nav__menu">
+                <div class="mobile-menu" id="nav-toggle">
+                    <div class="line-1"></div>
+                    <div class="line-2"></div>
+                    <div class="line-3"></div>
+                </div>
+            </div>
+            <div class="nav__container" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#inicio" class="link active">Início</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#sobre" class="link">Sobre</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#serviços" class="link">Serviços</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#portfolio" class="link">Portfólio</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#contato" class="link">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="l-main">
+        <!--Home-->
+        <section class="home" id="inicio">
+            <canvas id="nokey" width="800" height="800"></canvas>
+            <div class="home__container">
+                <p class="text">Olá, Meu nome é</p>
+                <h2>Cauã Serpa</h2>
+                <div class="line"></div>
+                <p class="text">Sou desenvolvedor Full Stack</p>
+                <div class="button">
+                    <a href="https://api.whatsapp.com/send?phone=5521972775758" class="btn">
+                        Contato
+                    </a>
+                </div>
+            </div>
+            <a class="sroll-down" href="#sobre"></a>
+        </section>
     
-    .portfolio .portfolio__container span.content.full
-    {
-        grid-column: span 2;
-        width: 500px;
-    }
-    .portfolio .portfolio__container span.content.end
-    {
-        grid-column: span 2;
-        width: 500px;
-    }
-
-    .about .about__container
-    {
-        display: flex;
-        align-items: center;
-    }
-    .about .about__container .about__img
-    {
-        justify-content: flex-end;
-        margin-right: var(--mb-6);
-        margin-bottom: 0;
-    }
-    .about .about__container .about__text
-    {
-        margin-left: var(--mb-6);
-    }
-
-    .footer .footer__container
-    {
-        width: 500px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-}
-@media screen and (max-width: 768px) {
-    .home .home__container
-    {
-        padding: var(--mb-4);
-        height: 100%;
-    }
-}
-@media screen and (min-width: 768px) {
-    body
-	{
-		margin: 0;
-	}
-	.section
-	{
-		margin-top: 4rem;
-		margin-bottom: 3rem;
-	}
-	.section-title
-	{
-		margin-bottom: var(--mb-6);
-	}
-	.section-title::after
-	{
-		width: 80px;
-		top: 3rem;
-	}
+        <!--About-->
+        <section class="about section" id="sobre">
+            <h2 class="title">Sobre</h2>
+            <div class="about__container">
+                <div class="about__img container">
+                    <img src="img/me.png" alt="">
+                </div>
+                <div class="about__text container">
+                    <div class="line"></div>
+                    <h2>Cauã Serpa</h2>
+                    <p class="text">
+                        Meu nome é Cauã Serpa, sou desenvolvedor<br>
+                        Full Stack há 2 anos.<br>
+                        Programo nas linguagens, PHP e JavaScript.<br><br>
+                        Sou focado em tirar os planos dos<br>
+                        meus clientes do papel, da melhor forma possível.<br><br>
+                        <a href="#contato">Vamos criar algo incrível</a>
+                    </p><br><br>
+                    <div class="follow__container">
+                        <p class="text">Me siga em:</p>
+                        <div class="follow">
+                            <a href="https://www.instagram.com/cauaserpa/" class="instagram" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M11.999 7.377a4.623 4.623 0 1 0 0 9.248 4.623 4.623 0 0 0 0-9.248zm0 7.627a3.004 3.004 0 1 1 0-6.008 3.004 3.004 0 0 1 0 6.008z"></path><circle cx="16.806" cy="7.207" r="1.078"></circle><path d="M20.533 6.111A4.605 4.605 0 0 0 17.9 3.479a6.606 6.606 0 0 0-2.186-.42c-.963-.042-1.268-.054-3.71-.054s-2.755 0-3.71.054a6.554 6.554 0 0 0-2.184.42 4.6 4.6 0 0 0-2.633 2.632 6.585 6.585 0 0 0-.419 2.186c-.043.962-.056 1.267-.056 3.71 0 2.442 0 2.753.056 3.71.015.748.156 1.486.419 2.187a4.61 4.61 0 0 0 2.634 2.632 6.584 6.584 0 0 0 2.185.45c.963.042 1.268.055 3.71.055s2.755 0 3.71-.055a6.615 6.615 0 0 0 2.186-.419 4.613 4.613 0 0 0 2.633-2.633c.263-.7.404-1.438.419-2.186.043-.962.056-1.267.056-3.71s0-2.753-.056-3.71a6.581 6.581 0 0 0-.421-2.217zm-1.218 9.532a5.043 5.043 0 0 1-.311 1.688 2.987 2.987 0 0 1-1.712 1.711 4.985 4.985 0 0 1-1.67.311c-.95.044-1.218.055-3.654.055-2.438 0-2.687 0-3.655-.055a4.96 4.96 0 0 1-1.669-.311 2.985 2.985 0 0 1-1.719-1.711 5.08 5.08 0 0 1-.311-1.669c-.043-.95-.053-1.218-.053-3.654 0-2.437 0-2.686.053-3.655a5.038 5.038 0 0 1 .311-1.687c.305-.789.93-1.41 1.719-1.712a5.01 5.01 0 0 1 1.669-.311c.951-.043 1.218-.055 3.655-.055s2.687 0 3.654.055a4.96 4.96 0 0 1 1.67.311 2.991 2.991 0 0 1 1.712 1.712 5.08 5.08 0 0 1 .311 1.669c.043.951.054 1.218.054 3.655 0 2.436 0 2.698-.043 3.654h-.011z"></path></svg>
+                            </a>
+                            <a href="#" class="youtube" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M21.593 7.203a2.506 2.506 0 0 0-1.762-1.766C18.265 5.007 12 5 12 5s-6.264-.007-7.831.404a2.56 2.56 0 0 0-1.766 1.778c-.413 1.566-.417 4.814-.417 4.814s-.004 3.264.406 4.814c.23.857.905 1.534 1.763 1.765 1.582.43 7.83.437 7.83.437s6.265.007 7.831-.403a2.515 2.515 0 0 0 1.767-1.763c.414-1.565.417-4.812.417-4.812s.02-3.265-.407-4.831zM9.996 15.005l.005-6 5.207 3.005-5.212 2.995z"></path></svg>
+                            </a>
+                            <a href="https://github.com/CauaSerpa" class="github" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.026 2c-5.509 0-9.974 4.465-9.974 9.974 0 4.406 2.857 8.145 6.821 9.465.499.09.679-.217.679-.481 0-.237-.008-.865-.011-1.696-2.775.602-3.361-1.338-3.361-1.338-.452-1.152-1.107-1.459-1.107-1.459-.905-.619.069-.605.069-.605 1.002.07 1.527 1.028 1.527 1.028.89 1.524 2.336 1.084 2.902.829.091-.645.351-1.085.635-1.334-2.214-.251-4.542-1.107-4.542-4.93 0-1.087.389-1.979 1.024-2.675-.101-.253-.446-1.268.099-2.64 0 0 .837-.269 2.742 1.021a9.582 9.582 0 0 1 2.496-.336 9.554 9.554 0 0 1 2.496.336c1.906-1.291 2.742-1.021 2.742-1.021.545 1.372.203 2.387.099 2.64.64.696 1.024 1.587 1.024 2.675 0 3.833-2.33 4.675-4.552 4.922.355.308.675.916.675 1.846 0 1.334-.012 2.41-.012 2.737 0 .267.178.577.687.479C19.146 20.115 22 16.379 22 11.974 22 6.465 17.535 2 12.026 2z"></path></svg>
+                            </a>
+                            <a href="https://www.linkedin.com/in/caua-serpa/" class="linkedin" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><circle cx="4.983" cy="5.009" r="2.188"></circle><path d="M9.237 8.855v12.139h3.769v-6.003c0-1.584.298-3.118 2.262-3.118 1.937 0 1.961 1.811 1.961 3.218v5.904H21v-6.657c0-3.27-.704-5.783-4.526-5.783-1.835 0-3.065 1.007-3.568 1.96h-.051v-1.66H9.237zm-6.142 0H6.87v12.139H3.095z"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     
-    header .nav
-    {
-        width: 100%;
-    }
-	.nav
-	{
-		height: calc(var(--header-height) + 1rem);
-	}
-	.nav__list
-	{
-		display: flex;
-		padding-top: 0;
-	}
-	.nav__item
-	{
-		margin-left: var(--mb-6);
-		margin-bottom: 0;
-	}
-	.nav__menu
-	{
-		display: none !important;
-	}
-    .link:hover
-    {
-        position: relative;
-        padding-right: 0;
-    }
-    .link::after
-    {
-        content: "";
-        position: absolute;
-        height: 2px !important;
-        width: 0;
-        top: 100%;
-        left: 0;
-        background: var(--golden);
-    }
-    .link:hover::after
-    {
-        width: 100%;
-    }
-    .active
-    {
-        padding-right: 0;
-    }
-	.active::after
-	{
-		background-color: var(--golden);
-	}
-    .active::after
-    {
-        position: absolute;
-        content: "";
-        height: 2px;
-        width: 100%;
-        top: 100%;
-        left: 0;
-        background: var(--golden);
-    }
-
-    .contact
-    {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-    .contact .contact__title
-    {
-        transform: translateY(-20px);
-    }
-    .contact .contact__title a.title
-    {
-        font-size: var(--big-font-size);
-    }
-    .contact .contact__title .title svg
-    {
-        transform: scale(2.5);
-        margin-left: var(--mb-2);
-        margin-bottom: var(--mb-1);
-    }
-}
-@media screen and (min-width: 1024px)
-{
+        <!--Services-->
+        <section class="services section" id="serviços">
+            <h2 class="title">Serviços</h2>
+            <div class="box__container bd-grid">
+                <div class="box">
+                    <img src="./img/design.png">
+                    <p class="title">Design</p>
+                    <p class="text">Criação do protótipo do 
+                        leyout para o site, com 
+                        base no desejo do cliente.
+                    </p>
+                </div>
+                <div class="box">
+                    <img src="./img/code.png">
+                    <p class="title">Code</p>
+                    <p class="text">Programação do site 
+                        com base no leyout 
+                        criado anteriormente.
+                    </p>
+                </div>
+                <div class="box">
+                    <img src="./img/seo.png">
+                    <p class="title">SEO</p>
+                    <p class="text">Uso de técnicas de SEO 
+                        para atingir o maior 
+                        número de clientes.
+                    </p>
+                </div>
+                <div class="box">
+                    <img src="./img/launch.png">
+                    <p class="title">Lançamento</p>
+                    <p class="text">Lançamento do site pronto 
+                        e otimizado para todos os 
+                        navegadores mais utilizados.
+                    </p>
+                </div>
+            </div>
+        </section>
     
-	.bd-grid
-	{
-		margin-left: auto;
-		margin-right: auto;
-	}
-}
+        <!--Portfólio-->
+        <section class="portfolio section" id="portfolio">
+            <h2 class="title">Portfólio</h2>
+            <div class="grid-container">
+                <div class="item-1 content">
+                    <div class="img"></div>
+                    <div class="hover">
+                        <span class="project text">Nike Air Jordan 1</span>
+                        <a class="view__project"  href="">
+                            <span class="text">Abrir</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M5 5h5V3H3v7h2zm5 14H5v-5H3v7h7zm11-5h-2v5h-5v2h7zm-2-4h2V3h-7v2h5z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="item-2 content">
+                    <div class="img"></div>
+                    <div class="hover">
+                        <span class="project text">God of War</span>
+                        <a class="view__project"  href="">
+                            <span class="text">Abrir</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M5 5h5V3H3v7h2zm5 14H5v-5H3v7h7zm11-5h-2v5h-5v2h7zm-2-4h2V3h-7v2h5z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="item-3 content">
+                    <div class="img"></div>
+                    <div class="hover">
+                        <span class="project text">Project</span>
+                        <a class="view__project"  href="">
+                            <span class="text">Abrir</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M5 5h5V3H3v7h2zm5 14H5v-5H3v7h7zm11-5h-2v5h-5v2h7zm-2-4h2V3h-7v2h5z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="item-4 content">
+                    <div class="img"></div>
+                    <div class="hover">
+                        <span class="project text">Project</span>
+                        <a class="view__project"  href="">
+                            <span class="text">Abrir</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M5 5h5V3H3v7h2zm5 14H5v-5H3v7h7zm11-5h-2v5h-5v2h7zm-2-4h2V3h-7v2h5z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="item-5 content">
+                    <div class="img"></div>
+                    <div class="hover">
+                        <span class="project text">Project</span>
+                        <a class="view__project"  href="">
+                            <span class="text">Abrir</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M5 5h5V3H3v7h2zm5 14H5v-5H3v7h7zm11-5h-2v5h-5v2h7zm-2-4h2V3h-7v2h5z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="item-6 content">
+                    <div class="img"></div>
+                    <div class="hover">
+                        <span class="project text">Project</span>
+                        <a class="view__project"  href="">
+                            <span class="text">Abrir</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M5 5h5V3H3v7h2zm5 14H5v-5H3v7h7zm11-5h-2v5h-5v2h7zm-2-4h2V3h-7v2h5z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!--Contact-->
+        <section class="contact section" id="contato">
+            <h5 class="text">PRECISANDO DE UM PROGRAMADOR?</h5>
+            <span class="contact__title">
+                <a class="title" href="https://api.whatsapp.com/send?phone=5521972775758">
+                    Vamos trabalhar juntos
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"></path></svg>
+                </a>
+            </span>
+        </section>
+    </main>
+
+    <a href="#" class="to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m6.293 13.293 1.414 1.414L12 10.414l4.293 4.293 1.414-1.414L12 7.586z"></path></svg>
+    </a>
+
+    <!--Footer-->
+    <footer class="footer">
+        <div class="footer__title">
+            <img src="./img/logo.png" alt="">
+            <h2 class="title">Cauã Serpa</h2>
+        </div>
+        <div class="footer__container">
+            <div class="social__media container">
+                <ul>
+                    <li>
+                        <a href="https://www.instagram.com/cauaserpa/" target="_blank">
+                            Instagram
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M11.999 7.377a4.623 4.623 0 1 0 0 9.248 4.623 4.623 0 0 0 0-9.248zm0 7.627a3.004 3.004 0 1 1 0-6.008 3.004 3.004 0 0 1 0 6.008z"></path><circle cx="16.806" cy="7.207" r="1.078"></circle><path d="M20.533 6.111A4.605 4.605 0 0 0 17.9 3.479a6.606 6.606 0 0 0-2.186-.42c-.963-.042-1.268-.054-3.71-.054s-2.755 0-3.71.054a6.554 6.554 0 0 0-2.184.42 4.6 4.6 0 0 0-2.633 2.632 6.585 6.585 0 0 0-.419 2.186c-.043.962-.056 1.267-.056 3.71 0 2.442 0 2.753.056 3.71.015.748.156 1.486.419 2.187a4.61 4.61 0 0 0 2.634 2.632 6.584 6.584 0 0 0 2.185.45c.963.042 1.268.055 3.71.055s2.755 0 3.71-.055a6.615 6.615 0 0 0 2.186-.419 4.613 4.613 0 0 0 2.633-2.633c.263-.7.404-1.438.419-2.186.043-.962.056-1.267.056-3.71s0-2.753-.056-3.71a6.581 6.581 0 0 0-.421-2.217zm-1.218 9.532a5.043 5.043 0 0 1-.311 1.688 2.987 2.987 0 0 1-1.712 1.711 4.985 4.985 0 0 1-1.67.311c-.95.044-1.218.055-3.654.055-2.438 0-2.687 0-3.655-.055a4.96 4.96 0 0 1-1.669-.311 2.985 2.985 0 0 1-1.719-1.711 5.08 5.08 0 0 1-.311-1.669c-.043-.95-.053-1.218-.053-3.654 0-2.437 0-2.686.053-3.655a5.038 5.038 0 0 1 .311-1.687c.305-.789.93-1.41 1.719-1.712a5.01 5.01 0 0 1 1.669-.311c.951-.043 1.218-.055 3.655-.055s2.687 0 3.654.055a4.96 4.96 0 0 1 1.67.311 2.991 2.991 0 0 1 1.712 1.712 5.08 5.08 0 0 1 .311 1.669c.043.951.054 1.218.054 3.655 0 2.436 0 2.698-.043 3.654h-.011z"></path></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">
+                            YouTube
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M21.593 7.203a2.506 2.506 0 0 0-1.762-1.766C18.265 5.007 12 5 12 5s-6.264-.007-7.831.404a2.56 2.56 0 0 0-1.766 1.778c-.413 1.566-.417 4.814-.417 4.814s-.004 3.264.406 4.814c.23.857.905 1.534 1.763 1.765 1.582.43 7.83.437 7.83.437s6.265.007 7.831-.403a2.515 2.515 0 0 0 1.767-1.763c.414-1.565.417-4.812.417-4.812s.02-3.265-.407-4.831zM9.996 15.005l.005-6 5.207 3.005-5.212 2.995z"></path></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/CauaSerpa" target="_blank">
+                            GitHub
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.026 2c-5.509 0-9.974 4.465-9.974 9.974 0 4.406 2.857 8.145 6.821 9.465.499.09.679-.217.679-.481 0-.237-.008-.865-.011-1.696-2.775.602-3.361-1.338-3.361-1.338-.452-1.152-1.107-1.459-1.107-1.459-.905-.619.069-.605.069-.605 1.002.07 1.527 1.028 1.527 1.028.89 1.524 2.336 1.084 2.902.829.091-.645.351-1.085.635-1.334-2.214-.251-4.542-1.107-4.542-4.93 0-1.087.389-1.979 1.024-2.675-.101-.253-.446-1.268.099-2.64 0 0 .837-.269 2.742 1.021a9.582 9.582 0 0 1 2.496-.336 9.554 9.554 0 0 1 2.496.336c1.906-1.291 2.742-1.021 2.742-1.021.545 1.372.203 2.387.099 2.64.64.696 1.024 1.587 1.024 2.675 0 3.833-2.33 4.675-4.552 4.922.355.308.675.916.675 1.846 0 1.334-.012 2.41-.012 2.737 0 .267.178.577.687.479C19.146 20.115 22 16.379 22 11.974 22 6.465 17.535 2 12.026 2z"></path></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/caua-serpa/" target="_blank">
+                            Linkedin
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><circle cx="4.983" cy="5.009" r="2.188"></circle><path d="M9.237 8.855v12.139h3.769v-6.003c0-1.584.298-3.118 2.262-3.118 1.937 0 1.961 1.811 1.961 3.218v5.904H21v-6.657c0-3.27-.704-5.783-4.526-5.783-1.835 0-3.065 1.007-3.568 1.96h-.051v-1.66H9.237zm-6.142 0H6.87v12.139H3.095z"></path></svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="height-line container"></div>
+            <div class="links container">
+                <ul>
+                    <li>
+                        <a href="#inicio">Início</a>
+                    </li>
+                    <li>
+                        <a href="#sobre">Sobre</a>
+                    </li>
+                    <li>
+                        <a href="#serviços">Serviços</a>
+                    </li>
+                    <li>
+                        <a href="#portfolio">Portfólio</a>
+                    </li>
+                    <li>
+                        <a href="#contato" class="footer__active">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p class="text"><span class="color">&#169; 2022 copyright,</span> todos os direitos reservados!</p>
+        </div>
+    </footer>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>
